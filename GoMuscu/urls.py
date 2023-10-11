@@ -16,11 +16,13 @@ Including another URLconf
 """
 from django.urls import include, path
 from rest_framework import routers
-from GoMuscu.Exercice import views as gomuscu_views
+from GoMuscu.Exercice import views as gomuscu_views_exercice
+from GoMuscu.Muscle import views as gomuscu_views_Muscle
 
 router = routers.DefaultRouter()
 
-router.register(r'exercice', gomuscu_views.ExerciceViewSet)
+router.register(r'exercice', gomuscu_views_exercice.ExerciceViewSet)
+router.register(r'muscle', gomuscu_views_Muscle.MuscleViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
