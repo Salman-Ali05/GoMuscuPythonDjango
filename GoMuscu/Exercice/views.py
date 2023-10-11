@@ -11,7 +11,6 @@ from .permissions import IsGetRequest
 class ExerciceViewSet(viewsets.ModelViewSet):
     queryset = ExerciceModel.objects.all()
     serializer_class = ExerciceSerializer
-    permission_classes = [IsAuthenticated]
 
     def get_permissions(self):
         if self.action == 'list':
