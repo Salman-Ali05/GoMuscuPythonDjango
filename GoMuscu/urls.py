@@ -19,6 +19,7 @@ from rest_framework import routers
 from GoMuscu.Exercice import views as gomuscu_views_exercice
 from GoMuscu.Muscle import views as gomuscu_views_Muscle
 
+
 router = routers.DefaultRouter()
 
 router.register(r'exercice', gomuscu_views_exercice.ExerciceViewSet)
