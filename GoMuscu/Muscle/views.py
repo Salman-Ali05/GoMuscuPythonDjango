@@ -1,5 +1,3 @@
-# from django.shortcuts import render
-
 # Create your views here.
 
 
@@ -9,8 +7,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from .serializers import MuscleSerializer
 from .models import MuscleModel
-# from rest_framework.permissions import IsAuthenticated
-# from .permissions import IsGetRequest
+from rest_framework.permissions import IsAuthenticated
+from .permissions import IsGetRequest
 
 
 
@@ -18,12 +16,12 @@ class MuscleViewSet(viewsets.ModelViewSet):
     queryset = MuscleModel.objects.all()
     serializer_class = MuscleSerializer
 
-    # def get_permissions(self):
-    #     if self.action == 'list':
-    #         permission_classes = [IsGetRequest]
-    #     else:
-    #         permission_classes = [IsAuthenticated]
-    #     return [permission() for permission in permission_classes]
+    def get_permissions(self):
+        if self.action == 'list':
+            permission_classes = [IsGetRequest]
+        else:
+            permission_classes = [IsAuthenticated]
+        return [permission() for permission in permission_classes]
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
