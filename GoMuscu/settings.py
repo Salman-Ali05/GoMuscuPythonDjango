@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'GoMuscu.User',
     # 'rest_framework_swagger',
     'drf_yasg',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -55,9 +56,13 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'GoMuscu.urls'
+
+CORS_ALLOW_ALL_ORIGINS = True
 
 TEMPLATES = [
     {
@@ -154,6 +159,18 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_LIFETIME': timedelta(minutes=60),
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
+CORS_ALLOWED_ORIGINS = [
+    "https://votre-site.com",
+    "http://localhost:8000",  # Par exemple, pour un développement local
+    "http://127.0.0.1:9000",  # Une autre origine de développement local
+]
+CORS_ALLOW_METHODS = [
+    'GET',
+    'POST',
+    'PUT',
+    'DELETE',
+]
+CORS_ALLOW_CREDENTIALS = True
 
 SWAGGER_SETTINGS = {
     'SECURITY_DEFINITIONS': {
