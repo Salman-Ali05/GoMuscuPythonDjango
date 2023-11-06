@@ -160,7 +160,7 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
 CORS_ALLOWED_ORIGINS = [
-    "https://votre-site.com",
+    "http://localhost:4200",
     "http://localhost:8000",  # Par exemple, pour un développement local
     "http://127.0.0.1:9000",  # Une autre origine de développement local
 ]
