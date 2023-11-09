@@ -2,20 +2,22 @@
 
 
 from rest_framework.generics import get_object_or_404
-from rest_framework import viewsets
+from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework import status
 from .serializers import MuscleSerializer
 from .models import MuscleModel
+from rest_framework.permissions import AllowAny
+
 # from rest_framework.permissions import IsAuthenticated
 # from .permissions import IsGetRequest
 
 
 
 class MuscleViewSet(viewsets.ModelViewSet):
+    permission_classes = [AllowAny]
     queryset = MuscleModel.objects.all()
     serializer_class = MuscleSerializer
-
     # def get_permissions(self):
     #     if self.action == 'list':
     #         permission_classes = [IsGetRequest]
